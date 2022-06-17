@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
+    <meta name="author" content="themefisher.com">
+
+    <title>Yosra pfe</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.ico" />
+
+    <!-- bootstrap.min css -->
+    <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Icon Font Css -->
+    <link rel="stylesheet" href="/static/plugins/icofont/icofont.min.css">
+    <!-- Slick Slider  CSS -->
+    <link rel="stylesheet" href="/static/plugins/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="/static/plugins/slick-carousel/slick/slick-theme.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+</head>
+
+<body id="top">
+
+    <header>
+        <div class="header-top-bar">
+            <div class="container">
+
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navigation" id="navbar">
+            <div class="container">
+                <a class="navbar-brand" href="">
+                    <img src="/static/images/logoUpsat.png" alt="" style="height: 50px!important;">
+                </a>
+
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarmain"
+                    aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icofont-navigation-menu"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarmain">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+
+                        <li class="nav-item"><a class="nav-link" href="/login/">logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section class="section service gray-bg">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7 text-center">
+                    <div class="section-title">
+                        <h2>LISTE EIAS</h2>
+                        <div class="divider mx-auto my-4"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="card bg-default shadow">
+                        <!-- Card header -->
+                        <!-- Light table -->
+                        <div class="table-responsive">
+                            <table id="EIASTable" class="table align-items-center table-dark table-flush">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col" class="sort text-white" data-sort="Device">Date</th>
+                                        <th scope="col" class="sort text-white" data-sort="Location">Categorie
+                                            Declaration</th>
+
+                                        <th scope="col" class="sort text-white">details</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody class="list">
+                                    {% for eias, eiasInfo in EIAS.items %}
+                                    <tr>
+                                        <th scope="row">
+                                            <div class="media align-items-center">
+
+                                                <div class="media-body">
+                                                    <span class="name mb-0 text-sm"> {{eiasInfo.date}}</span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <td>
+                                            <a>
+                                                {{eiasInfo.categorie_declaration}}
+                                            </a>
+                                        </td>
+
+
+                                        <td>
+                                            <button type="button" class="btn btn-outline-warning" data-toggle="modal"
+                                                onclick="viewEias('{{eias}}')"
+                                                data-target="#viewEIASModal">View</button>
+                                        </td>
+
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Slider Start -->
+
+
+
+
+
+
+
+    <!-- footer Start -->
+    <footer class="footer section gray-bg">
+        <div class="container" id="contact">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="widget widget-contact mb-5 mb-lg-0"></div>
+
+                    <h4 class="text-capitalize mb-3">Nous contacter</h4>
+                    <div class="divider mb-4"></div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="footer-contact-block mb-4">
+                        <div class="icon d-flex align-items-center">
+                            <i class="icofont-email mr-3"></i>
+                            <span>Email:</span>
+                        </div>
+                        <h4 class="mt-2"><a href="email:contact@email.com">contact@email.com</a></h4>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="footer-contact-block">
+                        <div class="icon d-flex align-items-center">
+                            <i class="icofont-support mr-3"></i>
+                            <span>TEL:</span>
+                        </div>
+                        <h4 class="mt-2"><a href="tel:+216XXXXXXXX">+216XXXXXXXX</a></h4>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </footer>
+    <div class="modal fade " id="viewEIASModal" >
+        <div class="modal-dialog modal-dialog-lg modal-dialog-centered" style="margin-top:700px;" role="dialog">
+            <div class="modal-content  modal-content-lg" style="width: 90%!important;">
+                <!-- Modal Header -->
+                <div class="modal-header pt-reduced pb-reduced">
+                    <h6 class="text-center modal-title" id="modelTitle">HEADER</h6>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body" >
+                    <div class="container">
+
+
+                        <div class="col-lg-12 col-md-12 ">
+                            <div class="appoinment-wrap mt-5 mt-lg-0">
+                                <h2 class="mb-2 title-color">EIAS</h2>
+                                <p class="mb-4">Évènement indésirable
+                                    associé aux soins (EIAS). <br>
+                            </div>
+                        </div>
+                        <form class="appoinment-form" id="appoinment-form">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h3>INFORMATION SUR LE DECLARANT</h3>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="">Catégorie du déclarant :</label>
+
+                                        <input name="text" id="categorie_declaration" disabled type="text"
+                                            class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="">Vous déclarez en qualité de:</label>
+
+                                        <input name="text" id="qualite" disabled type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="">Veuillez préciser votre catégorie professionnelle
+                                            :</label>
+
+                                        <input name="text" id="categorie_professionnel" disabled type="text"
+                                            class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="nom_etablissement">Nom de l’établissement, de la
+                                            structure ou du
+                                            service : </label>
+                                        <input name="text" id="nom_etablissement" disabled type="text"
+                                            class="form-control" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <h3>INFORMATION SUR LE PATIENT / RESIDENT EXPOSE A L’EIAS</h3>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="nombre_patien">Quel est le nombre de patients ou de
+                                            résidents
+                                            concernés par l’évènement</label>
+                                        <input name="text" id="nombre_patient" disabled type="number"
+                                            class="form-control" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="sexe">Sexe:</label>
+                                        <input class="form-control" disabled id="sexe">
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <h3>CIRCONSTANCE DE L’EIAS </h3>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="date">Date</label>
+                                        <input name="text" id="date" disabled type="date" class="form-control"
+                                            placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="consequence">Quelles sont les conséquences constatées
+                                            pour la
+                                            personne exposée?</label>
+                                        <input disabled class="form-control" id="consequence">
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <h3>CIRCONSTANCE DE L’EIAS </h3>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="diagnostic">Quel est le diagnostique principal de prise
+                                            en charge du
+                                            patient avant la survenue de l’EIAS ?</label>
+                                        <input name="text" id="diagnostic" disabled type="text" class="form-control"
+                                            placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="acte-soin">Quel est l’acte de soin impliqué dans
+                                            l’évènement
+                                            ?</label>
+                                        <input name="text" id="acte_soin" disabled type="text" class="form-control"
+                                            placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="hypothese">Quelles sont vos premières hypothèses de
+                                            causes de
+                                            survenue de cet évènement?</label>
+                                        <input name="text" id="hypothese" disabled type="text" class="form-control"
+                                            placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <h3>LES AUTRES CONSEQUENCES CONSTATEES AU MOMENT DE LA DECLARATION</h3>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>A votre connaissance l’évènement a-t-il eu également des
+                                            conséquences
+                                            pour le personnel?</label>
+
+                                        <input name="text" disabled id="connaissance_personnel" disabled type="text"
+                                            class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>A votre connaissance, l’évènement a-t-il eu des conséquences
+                                            pour la
+                                            structure ?</label>
+
+                                        <input name="text" id="connaissance_structure" disabled type="text"
+                                            class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>A votre connaissance, l’évènement a-t-il eu d’autres
+                                            conséquences
+                                            ?</label>
+
+                                        <input name="text" id="connaissance_autre" disabled type="text"
+                                            class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <h3>MESURES IMMEDIATES PRISES POUR LE PATIENT / RESIDENT</h3>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Des mesures immédiates ont-elles été prises pour le patient /
+                                            résident
+                                            ?</label>
+
+                                        <input id="mesures_immediate" disabled class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <h3>AUTRES MESURES</h3>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Y-a-t-il déjà eu une réunion entre l’équipe soignante
+                                            concernée et
+                                            l’équipe de direction ? </label>
+                                        <input class="form-control" id="reunion_equipe">
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Y-a-t-il déjà eu des mesures prises pour le soutien du
+                                            personnel ?
+                                        </label>
+                                        <input class="form-control" id="mesures_prise">
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Une information a-t-elle été communiquée ? </label>
+
+                                        <input id="information_communique" disabled class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Pensez-vous que l’évènement soit maîtrisé ? </label>
+                                        <input class="form-control" id="evennement_maitrise">
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <h3>ORGANISATION POUR REALISER L’ANALYSE DES EIAS</h3>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Avez-vous en interne, les ressources et la compétence
+                                            nécessaire à
+                                            l’analyse approfondie de l’EIAS ? </label>
+                                        <input class="form-control" id="ressource">
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Souhaitez-vous l’appui d’une expertise externe pour réaliser
+                                            l’analyse
+                                            approfondie de l’EIAS ? </label>
+                                        <input class="form-control" id="expertise">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="hideNegPos" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 
+    Essential Scripts
+    =====================================-->
+    <style>
+        .modal {
+            margin-top: auto;
+        }
+
+        .modal-dialog-lg {
+            width: 90%;
+            height: auto;
+            max-width: 90%;
+            min-width: 80%;
+            max-height: 100%;
+
+            padding: 0;
+        }
+
+        .modal-content-lg {
+
+            height: auto;
+            max-width: 100%;
+            min-width: 100%;
+            max-height: 100%;
+            border-radius: 0;
+        }
+    </style>
+
+    <!-- Main jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- Bootstrap 4.3.2 -->
+    <script src="/static/plugins/bootstrap/js/popper.js"></script>
+    <script src="/static/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Slick Slider -->
+
+
+    <!-- Google Map -->
+
+    <script src="/static/js/script.js"></script>
+    <script src="/static/js/contact.js"></script>
+
+    <script>
+        function viewEias(eias) {
+            $("#modelTitle").val("EIAS N° " + eias)
+            $.ajax({
+                type: "get",
+                url: "/admin/get_data/" + eias + '/',
+
+                success: function (results) {
+                    console.log(results)
+                    for (let element in results) {
+                        console.log(element)
+                        $("#" + element).val(results[element])
+                    }
+                    $("#viewEIASModal").show()
+                },
+                error: function (err) {
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
